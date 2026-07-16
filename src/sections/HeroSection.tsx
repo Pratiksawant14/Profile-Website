@@ -97,29 +97,29 @@ export const HeroSection = () => {
   // Apple-grade cinematic text transformations (Scene 1 Left -> Scene 2 Right)
   const textTranslateX = useTransform(
     scrollYProgress,
-    [0.3, 0.72],
+    [0.12, 0.55],
     ['0%', isDesktop && !isReducedMotion ? 'calc(100vw - 100% - 6rem)' : '0%']
   );
   const textTranslateY = useTransform(
     scrollYProgress,
-    [0.3, 0.51, 0.72],
+    [0.12, 0.33, 0.55],
     [0, isReducedMotion ? 0 : 16, 0]
   );
   const textOpacity = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.51, 0.72, 1],
+    [0, 0.12, 0.33, 0.55, 1],
     [1, 1, isReducedMotion ? 0.92 : 0.88, 1, 1]
   );
   const textScale = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.51, 0.72, 1],
+    [0, 0.12, 0.33, 0.55, 1],
     [1, 1, isReducedMotion ? 1 : 0.985, 1, 1]
   );
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[300vh] bg-black text-left border-b border-surface-200/80 dark:border-surface-800/80"
+      className="relative w-full min-h-[160vh] bg-black text-left border-b border-surface-200/80 dark:border-surface-800/80"
     >
       {/* Sticky Cinematic Viewport Anchor */}
       <div className="sticky top-0 w-full h-screen overflow-hidden -mt-16 pt-24 md:pt-32 pb-12 flex flex-col justify-between bg-black z-10">
