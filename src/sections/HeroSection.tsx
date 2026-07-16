@@ -1,15 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValueEvent, useReducedMotion } from 'framer-motion';
-import { Button, Badge, Tag, HeroBackground } from '../components';
-import { fadeUpItemVariants } from '../lib/motion';
+import { Button, Tag, HeroBackground } from '../components';
 import {
   ArrowRight,
   FileText,
   Mail,
-  MapPin,
   Cpu,
-  ShieldCheck,
 } from 'lucide-react';
 
 const PROFESSIONAL_FOCUS_TAGS = [
@@ -88,166 +85,169 @@ export const HeroSection = () => {
     const video = videoRef.current;
     if (!video || Number.isNaN(video.duration) || video.duration <= 0) return;
 
-    const targetTime = latest * video.duration;
+    // Clamp scrub progress to 0.85 so the video reaches your portrait and stays locked right on it without ever reaching the end-of-clip fade to black
+    const scrubProgress = Math.min(latest, 0.85);
+    const targetTime = scrubProgress * video.duration;
     if (!video.seeking && Math.abs(video.currentTime - targetTime) > 0.03 && video.readyState >= 2) {
       video.currentTime = targetTime;
     }
   });
 
   // Apple-grade cinematic text transformations (Scene 1 Left -> Scene 2 Right)
+  // CRITICAL: Third keyframe at 1.0 prevents Framer Motion from extrapolating past the final value
+  const finalX = isDesktop && !isReducedMotion ? 'calc(100vw - 100% - 6rem)' : '0%';
   const textTranslateX = useTransform(
     scrollYProgress,
-    [0.12, 0.55],
-    ['0%', isDesktop && !isReducedMotion ? 'calc(100vw - 100% - 6rem)' : '0%']
+    [0.12, 0.55, 1],
+    ['0%', finalX, finalX]
   );
-  const textTranslateY = useTransform(
+
+  // Scene 1 Heading: Isolated to Scene 1 only, completely fades out and unmounts (`display: none`) before Scene 2 arrives
+  const headingOpacity = useTransform(
     scrollYProgress,
-    [0.12, 0.33, 0.55],
-    [0, isReducedMotion ? 0 : 16, 0]
+    [0, 0.15, 0.3, 1],
+    [1, 1, 0, 0]
   );
-  const textOpacity = useTransform(
+  const headingScale = useTransform(
     scrollYProgress,
-    [0, 0.12, 0.33, 0.55, 1],
-    [1, 1, isReducedMotion ? 0.92 : 0.88, 1, 1]
+    [0, 0.15, 0.3, 1],
+    [1, 1, isReducedMotion ? 1 : 0.9, isReducedMotion ? 1 : 0.9]
   );
-  const textScale = useTransform(
-    scrollYProgress,
-    [0, 0.12, 0.33, 0.55, 1],
-    [1, 1, isReducedMotion ? 1 : 0.985, 1, 1]
-  );
+  const headingDisplay = useTransform(scrollYProgress, (v) => (v > 0.3 ? 'none' : 'block'));
+
+  // Scene 2: Single container opacity — fades in once and HELD at 1 with explicit keyframe at 1.0
+  const scene2Opacity = useTransform(scrollYProgress, [0.38, 0.50, 1], [0, 1, 1]);
+  const scene2PointerEvents = useTransform(scrollYProgress, (v) => (v < 0.38 ? 'none' : 'auto'));
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[160vh] bg-black text-left border-b border-surface-200/80 dark:border-surface-800/80"
+      className="relative z-20 w-full min-h-[160vh] bg-black text-left border-b border-surface-200/80 dark:border-surface-800/80"
     >
       {/* Sticky Cinematic Viewport Anchor */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden -mt-16 pt-24 md:pt-32 pb-12 flex flex-col justify-between bg-black z-10">
+      <div className="sticky top-0 w-full h-screen overflow-hidden -mt-16 pt-24 md:pt-32 pb-12 flex flex-col justify-center bg-black z-10">
         {/* Pure Video Background Component (`Background_video_landig_1.mp4`) */}
         <HeroBackground videoRef={videoRef} autoPlay={isMobile || !!isReducedMotion} />
 
-        <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 relative z-10 my-auto text-left">
+        {/* Both scenes live in the same normal-flow container — no absolute positioning */}
+        <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 relative z-10 text-left">
+
+          {/* SCENE 1: Mission statement — fades out and unmounts with display:none */}
+          <motion.div
+            style={{
+              opacity: headingOpacity,
+              scale: headingScale,
+              display: headingDisplay,
+            }}
+            className="w-full max-w-4xl origin-left"
+          >
+            <h1
+              className="font-snell font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-normal leading-[1.25] text-content-primary"
+              style={{ fontFamily: '"Snell Roundhand", "Pinyon Script", "Italianno", "Great Vibes", "Alex Brush", "Apple Chancery", "Bickham Script Pro", "Lucida Calligraphy", cursive' }}
+            >
+              Building Intelligent Software Systems for{' '}
+              <span className="text-accent underline decoration-accent/30 decoration-wavy underline-offset-8">
+                Real Business Problems
+              </span>
+            </h1>
+          </motion.div>
+
+          {/* SCENE 2: Identity & details — fades in and STAYS at opacity 1 forever */}
           <motion.div
             style={{
               x: textTranslateX,
-              y: textTranslateY,
-              opacity: textOpacity,
-              scale: textScale,
+              opacity: scene2Opacity,
+              pointerEvents: scene2PointerEvents,
             }}
-            className="flex flex-col items-start text-left w-full max-w-3xl lg:max-w-4xl space-y-6 md:space-y-8 will-change-transform"
+            className="w-full max-w-3xl lg:max-w-4xl will-change-transform"
           >
-            {/* Top Identity & Status Pill */}
-            <motion.div variants={fadeUpItemVariants} className="flex flex-wrap items-center gap-3">
-              <Badge variant="accent" showDot className="py-1 px-3 text-xs font-mono">
-                AI SYSTEMS ENGINEER
-              </Badge>
-              <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-content-tertiary">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-accent" />
-                  Pune, Maharashtra, India
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-status-success" />
-                  Production-Ready Architecture
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Primary Heading - Refined, Bold Engineering Statement */}
-            <motion.div variants={fadeUpItemVariants} className="space-y-3 w-full max-w-4xl">
-              <h1 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.12] text-content-primary">
-                Building Intelligent Software Systems for{' '}
-                <span className="text-accent underline decoration-accent/30 decoration-wavy underline-offset-8">
-                  Real Business Problems
-                </span>
-              </h1>
-            </motion.div>
-
-            {/* Supporting Text - Professional Introduction */}
-            <motion.div variants={fadeUpItemVariants} className="space-y-3 w-full max-w-3xl">
-              <p className="font-mono text-xs sm:text-sm font-semibold text-content-tertiary uppercase tracking-wider">
-                PRATIK SANTOSH SAWANT <span className="text-accent font-normal">• APPLIED AI ENGINEER</span>
-              </p>
-              <p className="font-sans text-base sm:text-lg text-content-secondary leading-relaxed font-normal">
-                I design production-grade AI systems, high-concurrency backend architectures, enterprise business platforms, and scalable full-stack applications engineered for resilience, low latency, and long-term maintainability.
-              </p>
-            </motion.div>
-
-            {/* Professional Focus - Badges/Pills */}
-            <motion.div variants={fadeUpItemVariants} className="space-y-2.5 pt-1 w-full">
-              <div className="flex items-center gap-2 text-xs font-mono text-content-tertiary">
-                <Cpu className="w-3.5 h-3.5 text-accent" />
-                <span>CORE ARCHITECTURAL CAPABILITIES</span>
-              </div>
-              <div className="flex flex-wrap gap-2 pt-0.5">
-                {PROFESSIONAL_FOCUS_TAGS.map((tag) => (
-                  <Tag key={tag} className="px-3 py-1.5 text-xs font-mono bg-surface-100/90 dark:bg-surface-800/90 hover:border-accent/40 transition-colors">
-                    {tag}
-                  </Tag>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Primary and Secondary CTA Section */}
-            <motion.div
-              variants={fadeUpItemVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between w-full gap-6 pt-4 border-t border-surface-200/60 dark:border-surface-800/60"
-            >
-              {/* Primary Actions */}
-              <div className="flex flex-wrap items-center gap-3.5">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={() => navigate('/engineering-systems')}
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                  className="font-semibold shadow-md hover:shadow-lg transition-all"
-                >
-                  View Engineering Systems
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => navigate('/resume')}
-                  leftIcon={<FileText className="w-4 h-4 text-accent" />}
-                  className="font-medium bg-background/80 backdrop-blur-xs"
-                >
-                  Download Resume
-                </Button>
+            <div className="flex flex-col items-start text-left w-full space-y-6 md:space-y-7">
+              {/* Identity */}
+              <div className="space-y-1 w-full max-w-3xl pt-1">
+                <p className="font-sans font-bold text-xl sm:text-2xl md:text-3xl text-content-primary tracking-tight">
+                  Pratik Santosh Sawant
+                </p>
+                <p className="font-mono text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider">
+                  Applied AI Engineer
+                </p>
               </div>
 
-              {/* Secondary Actions */}
-              <div className="flex items-center gap-2 sm:self-center">
-                <span className="text-xs font-mono text-content-tertiary mr-1 hidden lg:inline">
-                  CONNECT:
-                </span>
-                <a
-                  href="https://github.com/Pratiksawant14"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub Profile"
-                  className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
-                >
-                  <GitHubIcon />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/pratik-sawant-41475631b/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn Profile"
-                  className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
-                >
-                  <LinkedInIcon />
-                </a>
-                <a
-                  href="mailto:pratiksawant1403@gmail.com"
-                  aria-label="Direct Email"
-                  className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                </a>
+              {/* Introduction */}
+              <div className="w-full max-w-2xl">
+                <p className="font-sans text-base sm:text-lg text-content-secondary leading-relaxed font-normal">
+                  I design production-grade AI systems, backend platforms and intelligent software engineered to solve real business problems.
+                </p>
               </div>
-            </motion.div>
+
+              {/* Core Expertise */}
+              <div className="space-y-2.5 pt-1 w-full max-w-3xl">
+                <div className="flex items-center gap-2 text-xs font-mono text-content-tertiary">
+                  <Cpu className="w-3.5 h-3.5 text-accent" />
+                  <span>CORE ARCHITECTURAL CAPABILITIES</span>
+                </div>
+                <div className="flex flex-wrap gap-2 pt-0.5">
+                  {PROFESSIONAL_FOCUS_TAGS.map((tag) => (
+                    <Tag key={tag} className="px-3 py-1.5 text-xs font-mono bg-surface-100/90 dark:bg-surface-800/90 hover:border-accent/40 transition-colors">
+                      {tag}
+                    </Tag>
+                  ))}
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between w-full max-w-3xl gap-6 pt-4 border-t border-surface-200/60 dark:border-surface-800/60">
+                <div className="flex flex-wrap items-center gap-3.5">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={() => navigate('/engineering-systems')}
+                    rightIcon={<ArrowRight className="w-4 h-4" />}
+                    className="font-semibold shadow-md hover:shadow-lg transition-all"
+                  >
+                    View Engineering Systems
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={() => navigate('/resume')}
+                    leftIcon={<FileText className="w-4 h-4 text-accent" />}
+                    className="font-medium bg-background/80 backdrop-blur-xs"
+                  >
+                    Download Resume
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2 sm:self-center">
+                  <span className="text-xs font-mono text-content-tertiary mr-1 hidden lg:inline">
+                    CONNECT:
+                  </span>
+                  <a
+                    href="https://github.com/Pratiksawant14"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
+                  >
+                    <GitHubIcon />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/pratik-sawant-41475631b/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
+                  >
+                    <LinkedInIcon />
+                  </a>
+                  <a
+                    href="mailto:pratiksawant1403@gmail.com"
+                    aria-label="Direct Email"
+                    className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

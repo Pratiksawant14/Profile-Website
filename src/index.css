@@ -89,4 +89,9 @@
     background-size: 24px 24px;
     background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
   }
+
+  /* Authentic Snell Roundhand Script Utility with Copperplate Calligraphy Fallbacks (`Pinyon Script`) */
+  .font-snell {
+    font-family: "Snell Roundhand", "Pinyon Script", "Italianno", "Great Vibes", "Alex Brush", "Apple Chancery", "Bickham Script Pro", "Lucida Calligraphy", cursive !important;
+  }
 }

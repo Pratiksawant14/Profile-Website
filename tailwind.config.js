@@ -90,6 +90,18 @@ export default {
           '"Ubuntu Mono"',
           'monospace',
         ],
+        snell: [
+          '"Snell Roundhand"',
+          '"Pinyon Script"',
+          '"Italianno"',
+          '"Great Vibes"',
+          '"Alex Brush"',
+          '"Apple Chancery"',
+          '"Bickham Script Pro"',
+          '"Lucida Calligraphy"',
+          '"Monotype Corsiva"',
+          'cursive',
+        ],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem', letterSpacing: '-0.01em' }],
