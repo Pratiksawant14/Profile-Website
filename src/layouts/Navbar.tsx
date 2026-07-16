@@ -23,10 +23,12 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-normal backdrop-blur-md',
+        'sticky top-0 z-50 w-full transition-all duration-normal',
         isScrolled
-          ? 'bg-background/85 border-b border-surface-200 dark:border-surface-800 shadow-xs'
-          : 'bg-background/60 border-b border-transparent'
+          ? 'bg-background/30 dark:bg-surface-950/35 backdrop-blur-md border-b border-surface-200/20 dark:border-surface-800/20 shadow-2xs'
+          : location.pathname === '/'
+            ? 'bg-transparent border-transparent backdrop-blur-none'
+            : 'bg-background/60 backdrop-blur-md border-b border-transparent'
       )}
     >
       <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 h-16 flex items-center justify-between">
