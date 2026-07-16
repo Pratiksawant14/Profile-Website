@@ -141,15 +141,24 @@ export const HeroSection = () => {
             }}
             className="w-full max-w-4xl origin-left"
           >
-            <h1
-              className="font-snell font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-normal leading-[1.25] text-content-primary"
-              style={{ fontFamily: '"Snell Roundhand", "Pinyon Script", "Italianno", "Great Vibes", "Alex Brush", "Apple Chancery", "Bickham Script Pro", "Lucida Calligraphy", cursive' }}
-            >
-              Building Intelligent Software Systems for{' '}
-              <span className="text-accent underline decoration-accent/30 decoration-wavy underline-offset-8">
-                Real Business Problems
-              </span>
-            </h1>
+            <div className="flex flex-col items-start space-y-1 sm:space-y-2">
+              <div
+                className="font-oregano font-normal text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-content-primary leading-none tracking-normal mb-1 sm:mb-2"
+                style={{ fontFamily: '"Oregano", cursive' }}
+              >
+                Hi
+              </div>
+              <h1
+                className="font-snell font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-normal leading-[1.2] text-content-primary flex flex-col space-y-1 sm:space-y-2"
+                style={{ fontFamily: '"Snell Roundhand", "Pinyon Script", "Italianno", "Great Vibes", "Alex Brush", "Apple Chancery", "Bickham Script Pro", "Lucida Calligraphy", cursive' }}
+              >
+                <span>I'm Building Intelligent Software</span>
+                <span>Systems for</span>
+                <span className="text-[#fef08a] font-normal tracking-normal">
+                  Real Business Problems
+                </span>
+              </h1>
+            </div>
           </motion.div>
 
           {/* SCENE 2: Identity & details — fades in and STAYS at opacity 1 forever */}
@@ -163,11 +172,14 @@ export const HeroSection = () => {
           >
             <div className="flex flex-col items-start text-left w-full space-y-6 md:space-y-7">
               {/* Identity */}
-              <div className="space-y-1 w-full max-w-3xl pt-1">
-                <p className="font-sans font-bold text-xl sm:text-2xl md:text-3xl text-content-primary tracking-tight">
+              <div className="space-y-1.5 w-full max-w-3xl pt-1">
+                <p
+                  className="font-eagle font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-content-primary tracking-normal leading-tight"
+                  style={{ fontFamily: '"Eagle Lake", serif, cursive' }}
+                >
                   Pratik Santosh Sawant
                 </p>
-                <p className="font-mono text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider">
+                <p className="font-mono text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider pt-1">
                   Applied AI Engineer
                 </p>
               </div>

@@ -102,6 +102,15 @@ export default {
           '"Monotype Corsiva"',
           'cursive',
         ],
+        eagle: [
+          '"Eagle Lake"',
+          'serif',
+          'cursive',
+        ],
+        oregano: [
+          '"Oregano"',
+          'cursive',
+        ],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem', letterSpacing: '-0.01em' }],
