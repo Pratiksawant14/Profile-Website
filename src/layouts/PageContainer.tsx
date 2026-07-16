@@ -12,10 +12,10 @@ export interface PageContainerProps extends Omit<HTMLMotionProps<'div'>, 'ref' |
 export const PageContainer = forwardRef<HTMLDivElement, PageContainerProps>(
   ({ className, maxWidth = 'container', withGridPattern = false, children, ...props }, ref) => {
     const maxWidthMap = {
-      container: 'max-w-container',
-      full: 'max-w-full',
-      '4xl': 'max-w-4xl',
-      '6xl': 'max-w-6xl',
+      container: 'w-full max-w-none',
+      full: 'w-full max-w-none',
+      '4xl': 'w-full max-w-4xl',
+      '6xl': 'w-full max-w-6xl',
     };
 
     return (
@@ -26,13 +26,19 @@ export const PageContainer = forwardRef<HTMLDivElement, PageContainerProps>(
         animate="animate"
         exit="exit"
         className={cn(
-          'w-full min-h-[calc(100vh-4rem)] flex flex-col relative',
+          'w-full min-h-[calc(100vh-4rem)] flex flex-col relative text-left',
           withGridPattern ? 'bg-grid-pattern' : '',
           className
         )}
         {...props}
       >
-        <div className={cn('w-full mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12 flex-1 flex flex-col', maxWidthMap[maxWidth])}>
+        <div
+          className={cn(
+            'w-full max-w-none flex-1 flex flex-col text-left',
+            className?.includes('!p-0') ? 'p-0 py-0 px-0' : 'px-6 sm:px-8 md:px-12 lg:px-16 py-8 md:py-12',
+            maxWidthMap[maxWidth]
+          )}
+        >
           {children}
         </div>
       </motion.div>

@@ -39,7 +39,7 @@ export const ProfessionalProfileSection: React.FC = () => {
       <ProfileHeaderCard identity={PROFILE_IDENTITY} />
 
       {/* Education & Core Domains Bento Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-8 items-start text-left">
         {/* Left Column: Education Timeline Block */}
         <div className="lg:col-span-1">
           <ProfileEducationTimeline education={PROFILE_EDUCATION} />

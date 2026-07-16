@@ -41,16 +41,16 @@ export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden py-16 md:py-24 border-b border-surface-200/80 dark:border-surface-800/80">
+    <section className="relative min-h-screen -mt-16 pt-28 md:pt-36 pb-16 md:pb-24 flex flex-col justify-start overflow-hidden border-b border-surface-200/80 dark:border-surface-800/80 text-left">
       {/* Subtle Engineering Node Graph & Blueprint Background */}
       <HeroBackground />
 
-      <div className="max-w-container mx-auto px-4 sm:px-6 md:px-8 w-full relative z-10 my-auto">
+      <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 relative z-10 my-auto text-left">
         <motion.div
           variants={staggerContainerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-start text-left max-w-4xl space-y-6 md:space-y-8"
+          className="flex flex-col items-start text-left w-full space-y-6 md:space-y-8"
         >
           {/* Top Identity & Status Pill */}
           <motion.div variants={fadeUpItemVariants} className="flex flex-wrap items-center gap-3">
@@ -70,9 +70,9 @@ export const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Primary Heading - Large, Bold Engineering Statement */}
-          <motion.div variants={fadeUpItemVariants} className="space-y-3 w-full">
-            <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight leading-[1.08] text-content-primary">
+          {/* Primary Heading - Refined, Bold Engineering Statement */}
+          <motion.div variants={fadeUpItemVariants} className="space-y-3 w-full max-w-4xl">
+            <h1 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.12] text-content-primary">
               Building Intelligent Software Systems for{' '}
               <span className="text-accent underline decoration-accent/30 decoration-wavy underline-offset-8">
                 Real Business Problems
@@ -81,11 +81,11 @@ export const HeroSection = () => {
           </motion.div>
 
           {/* Supporting Text - Professional Introduction */}
-          <motion.div variants={fadeUpItemVariants} className="space-y-3 max-w-3xl">
+          <motion.div variants={fadeUpItemVariants} className="space-y-3 w-full max-w-3xl">
             <p className="font-mono text-xs sm:text-sm font-semibold text-content-tertiary uppercase tracking-wider">
               PRATIK SANTOSH SAWANT <span className="text-accent font-normal">• APPLIED AI ENGINEER</span>
             </p>
-            <p className="font-sans text-base sm:text-lg md:text-xl text-content-secondary leading-relaxed font-normal">
+            <p className="font-sans text-base sm:text-lg text-content-secondary leading-relaxed font-normal">
               I design production-grade AI systems, high-concurrency backend architectures, enterprise business platforms, and scalable full-stack applications engineered for resilience, low latency, and long-term maintainability.
             </p>
           </motion.div>
@@ -138,7 +138,7 @@ export const HeroSection = () => {
                 CONNECT:
               </span>
               <a
-                href="https://github.com"
+                href="https://github.com/Pratiksawant14"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
@@ -147,7 +147,7 @@ export const HeroSection = () => {
                 <GitHubIcon />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/pratik-sawant-41475631b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
@@ -156,7 +156,7 @@ export const HeroSection = () => {
                 <LinkedInIcon />
               </a>
               <a
-                href="mailto:contact@pratiksawant.dev"
+                href="mailto:pratiksawant1403@gmail.com"
                 aria-label="Direct Email"
                 className="p-2.5 rounded-md bg-surface-100 dark:bg-surface-800 text-content-secondary hover:text-content-primary hover:bg-surface-200 dark:hover:bg-surface-700 border border-surface-200 dark:border-surface-700 transition-colors"
               >

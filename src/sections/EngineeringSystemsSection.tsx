@@ -92,12 +92,12 @@ export const EngineeringSystemsSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-20 sm:mt-24 p-8 sm:p-12 rounded-xl bg-surface-900 text-white dark:bg-surface-950 border border-surface-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative overflow-hidden"
+        className="mt-20 sm:mt-24 p-8 sm:p-12 rounded-xl bg-surface-900 text-white dark:bg-surface-950 border border-surface-800 shadow-xl flex flex-col md:flex-row items-start justify-between gap-8 text-left relative overflow-hidden"
       >
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="space-y-3 max-w-2xl relative z-10">
-          <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-accent font-bold">
+        <div className="space-y-3 max-w-2xl relative z-10 text-left items-start">
+          <div className="flex items-center justify-start gap-2 text-xs font-mono text-accent font-bold">
             <Cpu className="w-4 h-4" />
             <span>ARCHITECTURAL METHODOLOGY</span>
           </div>

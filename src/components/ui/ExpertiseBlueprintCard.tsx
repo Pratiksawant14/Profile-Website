@@ -89,7 +89,7 @@ export const ExpertiseBlueprintCard: React.FC<ExpertiseBlueprintCardProps> = ({
           <span>MATURITY RATED</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-4 pt-2 text-left">
           {domain.nodes.map((node) => {
             const isSelected = activeNodeId === node.id;
             const isConnected =

@@ -64,12 +64,12 @@ export const MetricsSection = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8"
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 w-full gap-6 md:gap-8 text-left"
       >
         {PROFESSIONAL_METRICS.map((metric) => (
           <div
             key={metric.id}
-            className="flex flex-col space-y-1.5 p-4 rounded-md bg-background/60 dark:bg-surface-900/40 border border-surface-200/60 dark:border-surface-800/60 transition-colors hover:border-surface-300 dark:hover:border-surface-700"
+            className="flex flex-col items-start text-left space-y-1.5 p-4 rounded-md bg-background/60 dark:bg-surface-900/40 border border-surface-200/60 dark:border-surface-800/60 transition-colors hover:border-surface-300 dark:hover:border-surface-700 w-full"
           >
             <div className="flex items-center justify-between text-content-tertiary mb-1">
               <span className="font-mono text-[11px] uppercase tracking-wider text-content-secondary font-semibold">

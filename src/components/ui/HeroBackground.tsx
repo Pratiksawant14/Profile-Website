@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from '../../hooks';
+import landingBg from '../../assets/landingpage_backgroun_1.png';
 
 export const HeroBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -114,20 +115,27 @@ export const HeroBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Sleek Desk & Laptop Workspace Background Image */}
+      <img
+        src={landingBg}
+        alt="Engineering Workspace Background"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-85 dark:opacity-80 transition-opacity duration-normal"
+      />
+
       {/* Blueprint & Grid geometric lines */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-60 dark:opacity-40" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-30" />
       
-      {/* Radial fade out at edges so content text remains pristine */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-background/60 to-background" />
+      {/* Dark/Light overlay gradient to ensure crisp text readability while showing desk edge-to-edge */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/50 to-transparent dark:from-surface-950/80 dark:via-surface-950/45 dark:to-transparent" />
 
       {/* Subtle Node Graph Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-70"
+        className="absolute inset-0 w-full h-full opacity-60"
       />
 
       {/* Subtle glow orb behind heading */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[750px] h-[300px] bg-accent/10 dark:bg-accent/15 blur-[120px] rounded-full" />
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[750px] h-[300px] bg-accent/15 dark:bg-accent/20 blur-[130px] rounded-full" />
     </div>
   );
 };

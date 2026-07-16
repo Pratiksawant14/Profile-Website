@@ -44,7 +44,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ links }) => {
 
   return (
     <footer className="w-full border-t border-surface-200 dark:border-surface-800 bg-background dark:bg-surface-950 pt-16 pb-12 transition-colors">
-      <div className="max-w-container mx-auto px-4 sm:px-6 md:px-8 space-y-12">
+      <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 space-y-12 text-left">
         {/* Main Footer Split */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 justify-between items-start">
           {/* Identity & Mission */}

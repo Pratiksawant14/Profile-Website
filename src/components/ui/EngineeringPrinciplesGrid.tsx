@@ -14,13 +14,13 @@ export const EngineeringPrinciplesGrid: React.FC = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-60px' }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-8"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full gap-8 my-8 text-left"
     >
       {ENGINEERING_PRINCIPLES.map((principle: EngineeringPrinciple) => (
-        <motion.div key={principle.id} variants={fadeUpItemVariants} className="h-full">
+        <motion.div key={principle.id} variants={fadeUpItemVariants} className="h-full w-full">
           <Card
             variant="interactive"
-            className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/30 border border-surface-200 dark:border-surface-800 hover:border-accent/40 transition-all"
+            className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/30 border border-surface-200 dark:border-surface-800 hover:border-accent/40 transition-all text-left"
           >
             <div>
               <CardHeader className="pb-3 flex-row items-center justify-between space-y-0">

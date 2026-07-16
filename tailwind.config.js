@@ -124,7 +124,7 @@ export default {
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',
-        'container': '76rem', // Standard engineering documentation / platform width (1216px)
+        'container': '100%', // Full screen edge-to-edge alignment
       },
       boxShadow: {
         'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.03)',

@@ -29,7 +29,7 @@ export const SectionContainer = forwardRef<HTMLElement, SectionContainerProps>(
         {...props}
       >
         {container ? (
-          <div className="max-w-container mx-auto px-4 sm:px-6 md:px-8 w-full">{children}</div>
+          <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 text-left">{children}</div>
         ) : (
           children
         )}

@@ -337,7 +337,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
             ))}
           </div>
 
-          <div className="text-[10px] font-mono text-surface-400 text-center pt-2.5 border-t border-surface-800">
+          <div className="text-[10px] font-mono text-surface-400 text-left pt-2.5 border-t border-surface-800">
             STATUS: HIGH AVAILABILITY ENFORCED
           </div>
         </div>

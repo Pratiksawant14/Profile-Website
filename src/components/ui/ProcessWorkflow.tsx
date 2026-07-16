@@ -38,18 +38,18 @@ export const ProcessWorkflow: React.FC = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-60px' }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full gap-8 relative text-left"
       >
         {ENGINEERING_STAGES.map((stage: WorkflowStage, index: number) => {
           const isLastInRow = (index + 1) % 4 === 0;
           const isFinalStage = index === ENGINEERING_STAGES.length - 1;
 
           return (
-            <motion.div key={stage.step} variants={fadeUpItemVariants} className="flex flex-col relative h-full">
+            <motion.div key={stage.step} variants={fadeUpItemVariants} className="flex flex-col relative h-full w-full">
               {/* Process Card */}
               <Card
                 variant="interactive"
-                className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/40 border border-surface-200 dark:border-surface-800 hover:border-accent/50 transition-all relative z-10"
+                className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/40 border border-surface-200 dark:border-surface-800 hover:border-accent/50 transition-all relative z-10 text-left"
               >
                 <div>
                   <CardHeader className="pb-3 flex-row items-center justify-between space-y-0">

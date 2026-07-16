@@ -69,25 +69,25 @@ export const FocusedOnSection = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-50px' }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8 text-left"
       >
         {FOCUS_AREAS.map((item) => (
-          <motion.div key={item.id} variants={fadeUpItemVariants} className="h-full">
-            <Card variant="interactive" className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/40 border border-surface-200 dark:border-surface-800 hover:border-accent/40 transition-all">
+          <motion.div key={item.id} variants={fadeUpItemVariants} className="h-full w-full">
+            <Card variant="interactive" className="h-full flex flex-col justify-between p-2 bg-background dark:bg-surface-900/40 border border-surface-200 dark:border-surface-800 hover:border-accent/40 transition-all text-left">
               <div>
-                <CardHeader className="pb-3 flex-row items-center justify-between space-y-0">
-                  <div className="w-10 h-10 rounded-md bg-surface-100 dark:bg-surface-800 flex items-center justify-center border border-surface-200 dark:border-surface-700">
+                <CardHeader className="pb-3 flex-row items-center justify-between space-y-0 text-left">
+                  <div className="w-10 h-10 rounded-md bg-surface-100 dark:bg-surface-800 flex items-center justify-center border border-surface-200 dark:border-surface-700 shrink-0">
                     {item.icon}
                   </div>
                   <Badge variant="accent" className="font-mono text-[10px]">
                     {item.badge}
                   </Badge>
                 </CardHeader>
-                <CardContent className="pt-2">
-                  <CardTitle className="text-lg font-bold mb-2 flex items-center gap-2">
+                <CardContent className="pt-2 text-left">
+                  <CardTitle className="text-lg font-bold mb-2 flex items-center gap-2 text-left">
                     {item.title}
                   </CardTitle>
-                  <CardDescription className="text-sm leading-relaxed text-content-secondary">
+                  <CardDescription className="text-sm leading-relaxed text-content-secondary text-left">
                     {item.description}
                   </CardDescription>
                 </CardContent>

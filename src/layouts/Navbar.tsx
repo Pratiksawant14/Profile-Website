@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
           : 'bg-background/60 border-b border-transparent'
       )}
     >
-      <div className="max-w-container mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
+      <div className="w-full max-w-none px-6 sm:px-8 md:px-12 lg:px-16 h-16 flex items-center justify-between">
         {/* Brand / Engineering Identity */}
         <NavLink
           to="/"

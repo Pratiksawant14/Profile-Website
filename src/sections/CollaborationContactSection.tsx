@@ -37,7 +37,7 @@ export const CollaborationContactSection: React.FC = () => {
       />
 
       {/* Professional Contact Card & Strategic Availability Card Split */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-8 items-start pt-4 text-left">
         <ContactCard links={PROFESSIONAL_CONTACT_LINKS} />
         <ContactAvailabilityCard info={CONTACT_AVAILABILITY} />
       </div>
