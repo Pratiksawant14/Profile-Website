@@ -5,8 +5,6 @@ import { MainLayout } from './layouts/MainLayout';
 import {
   HomePage,
   EngineeringSystemsPage,
-  ProcessPage,
-  CaseStudiesPage,
   ExpertisePage,
   OpenSourcePage,
   ResumePage,
@@ -22,9 +20,6 @@ export const App: React.FC = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
             <Route path="engineering-systems" element={<EngineeringSystemsPage />} />
-            <Route path="process" element={<ProcessPage />} />
-            <Route path="case-studies" element={<CaseStudiesPage />} />
-            <Route path="case-studies/:id" element={<CaseStudiesPage />} />
             <Route path="expertise" element={<ExpertisePage />} />
             <Route path="open-source" element={<OpenSourcePage />} />
             <Route path="resume" element={<ResumePage />} />
