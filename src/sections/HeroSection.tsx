@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValueEvent, useReducedMotion } from 'framer-motion';
-import { Button, Tag, HeroBackground } from '../components';
+import { Tag, HeroBackground } from '../components';
 import {
   ArrowRight,
-  FileText,
   Mail,
   Cpu,
 } from 'lucide-react';
@@ -179,7 +178,7 @@ export const HeroSection = () => {
                 >
                   Pratik Santosh Sawant
                 </p>
-                <p className="font-mono text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider pt-1">
+                <p className="font-mono text-xs sm:text-sm font-semibold text-[#fef08a] uppercase tracking-wider pt-1">
                   Applied AI Engineer
                 </p>
               </div>
@@ -208,25 +207,21 @@ export const HeroSection = () => {
 
               {/* Actions */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between w-full max-w-3xl gap-6 pt-4 border-t border-surface-200/60 dark:border-surface-800/60">
-                <div className="flex flex-wrap items-center gap-3.5">
-                  <Button
-                    variant="primary"
-                    size="lg"
+                <div className="flex flex-wrap items-center gap-6">
+                  <button
                     onClick={() => navigate('/engineering-systems')}
-                    rightIcon={<ArrowRight className="w-4 h-4" />}
-                    className="font-semibold shadow-md hover:shadow-lg transition-all"
+                    className="group inline-flex items-center gap-2 font-semibold text-base text-content-primary hover:text-accent transition-colors cursor-pointer select-none"
                   >
-                    View Engineering Systems
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
+                    <span>View Engineering Systems</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </button>
+                  <button
                     onClick={() => navigate('/resume')}
-                    leftIcon={<FileText className="w-4 h-4 text-accent" />}
-                    className="font-medium bg-background/80 backdrop-blur-xs"
+                    className="group inline-flex items-center gap-2 font-semibold text-base text-content-primary hover:text-accent transition-colors cursor-pointer select-none"
                   >
-                    Download Resume
-                  </Button>
+                    <span>Resume</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </button>
                 </div>
                 <div className="flex items-center gap-2 sm:self-center">
                   <span className="text-xs font-mono text-content-tertiary mr-1 hidden lg:inline">
