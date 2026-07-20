@@ -6,6 +6,7 @@ import type {
   ResumeMetadata,
   AvailabilityInfo,
 } from '../types/profile';
+import resumePdf from '../assets/Pratik_Sawant_AI_Intern_Resume.pdf';
 
 export const PROFILE_IDENTITY: ProfileIdentity = {
   fullName: 'Pratik Santosh Sawant',
@@ -105,7 +106,7 @@ export const PROFILE_LANGUAGES: string[] = ['English', 'Hindi', 'Marathi'];
 
 export const PROFILE_RESUME_INFO: ResumeMetadata = {
   title: 'Pratik Santosh Sawant — Engineering Profile & Spec',
-  fileUrl: '/Pratik_Sawant_Resume.pdf',
+  fileUrl: resumePdf,
   lastUpdated: 'July 2026 (Production Release)',
   fileFormat: 'PDF Specification (ATS & Executive Ready)',
 };

@@ -6,7 +6,6 @@ import {
   Badge,
   ExpertiseBlueprintCard,
   ExpertiseInspectorDrawer,
-  LearningPhilosophyCallout,
 } from '../components';
 import { EXPERTISE_DOMAINS } from '../constants';
 import type { ExpertiseDomain, TechNode } from '../types/expertise';
@@ -118,10 +117,7 @@ export const TechnicalExpertiseSection: React.FC = () => {
         onClose={() => setSelectedNode({ node: null, domainTitle: null })}
       />
 
-      {/* Learning Philosophy Callout Box */}
-      <div className="pt-8 border-t border-surface-200/60 dark:border-surface-800/60">
-        <LearningPhilosophyCallout />
-      </div>
+
     </SectionContainer>
   );
 };

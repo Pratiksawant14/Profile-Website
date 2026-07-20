@@ -11,11 +11,7 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     label: 'Engineering Systems',
     path: '/engineering-systems',
   },
-  {
-    id: 'open-source',
-    label: 'Open Source',
-    path: '/open-source',
-  },
+
   {
     id: 'resume',
     label: 'Resume',
