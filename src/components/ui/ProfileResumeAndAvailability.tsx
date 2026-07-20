@@ -59,7 +59,7 @@ export const ProfileResumeAndAvailability: React.FC<ProfileResumeAndAvailability
             target="_blank"
             rel="noopener noreferrer"
             download="Pratik_Sawant_Resume.pdf"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent hover:bg-accent-light text-white font-sans text-xs font-bold transition-all shadow-md cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent hover:bg-accent-light text-black font-sans text-xs font-bold transition-all shadow-md cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>PDF Download</span>

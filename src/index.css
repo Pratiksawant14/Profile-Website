@@ -16,14 +16,14 @@
     --color-text-tertiary: #64748b;
     --color-text-inverse: #ffffff;
     
-    --color-accent: #2563eb;
-    --color-accent-hover: #1d4ed8;
-    --color-accent-subtle: #eff6ff;
+    --color-accent: #facc15;
+    --color-accent-hover: #eab308;
+    --color-accent-subtle: #fefce8;
   }
 
   .dark {
     /* Color Palette - Clean Engineering Dark Mode (Vercel / Stripe inspired) */
-    --color-bg: #090d16;
+    --color-bg: #000000;
     --color-surface: #131926;
     --color-surface-hover: #1e2638;
     --color-border: #1e293b;
@@ -34,9 +34,9 @@
     --color-text-tertiary: #64748b;
     --color-text-inverse: #0f172a;
     
-    --color-accent: #3b82f6;
-    --color-accent-hover: #60a5fa;
-    --color-accent-subtle: rgba(59, 130, 246, 0.12);
+    --color-accent: #fef08a;
+    --color-accent-hover: #fde047;
+    --color-accent-subtle: rgba(254, 240, 138, 0.12);
   }
 
   html {

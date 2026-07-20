@@ -32,7 +32,7 @@ export const ContactCallToAction: React.FC<ContactCallToActionProps> = ({ email 
       <div className="relative z-10 shrink-0 self-start md:self-center">
         <a
           href={`mailto:${email}`}
-          className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-accent hover:bg-accent-light text-white font-sans font-bold text-base transition-all shadow-xl hover:shadow-accent/40 group/btn cursor-pointer"
+          className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-accent hover:bg-accent-light text-black font-sans font-bold text-base transition-all shadow-xl hover:shadow-accent/40 group/btn cursor-pointer"
         >
           <Mail className="w-5 h-5" />
           <span>Start a Conversation</span>
