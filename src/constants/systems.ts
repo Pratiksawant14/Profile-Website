@@ -1,4 +1,10 @@
 import type { EngineeringSystem } from '../types/systems';
+import painAwayBg from '../assets/ChatGPT Image Jul 5, 2026, 12_16_32 AM.png';
+import memRootedBg from '../assets/mem-rooted.png';
+import translateIqBg from '../assets/Translate-IQ.png';
+import intelliCreditBg from '../assets/intelli-credit.png';
+import autonomousCiCdBg from '../assets/autonomous-CI CD agent.png';
+import learnifyBg from '../assets/Learnify.png';
 
 export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
   {
@@ -40,6 +46,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       'Business Automation',
     ],
     githubUrl: 'https://github.com/pratiksawant/pain-away-platform',
+    backgroundImage: painAwayBg,
     caseStudyUrl: '/case-studies/pain-away',
   },
   {
@@ -72,6 +79,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       { label: 'LLM Execution', subtext: 'Token Optimized' },
     ],
     githubUrl: 'https://github.com/pratiksawant/mem-rooted-core',
+    backgroundImage: memRootedBg,
     caseStudyUrl: '/case-studies/mem-rooted',
   },
   {
@@ -104,6 +112,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       { label: 'CDN Delivery', subtext: 'Edge Cache' },
     ],
     githubUrl: 'https://github.com/pratiksawant/translate-iq-engine',
+    backgroundImage: translateIqBg,
     caseStudyUrl: '/case-studies/translate-iq',
   },
   {
@@ -136,6 +145,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       { label: 'Underwriter UI', subtext: 'Explainable Report' },
     ],
     githubUrl: 'https://github.com/pratiksawant/intelli-credit-platform',
+    backgroundImage: intelliCreditBg,
     caseStudyUrl: '/case-studies/intelli-credit',
   },
   {
@@ -167,6 +177,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       { label: 'Git Controller', subtext: 'Auto PR Submission' },
     ],
     githubUrl: 'https://github.com/pratiksawant/cicd-healing-agent',
+    backgroundImage: autonomousCiCdBg,
     caseStudyUrl: '/case-studies/autonomous-cicd-healing-agent',
   },
   {
@@ -199,6 +210,7 @@ export const ENGINEERING_SYSTEMS: EngineeringSystem[] = [
       { label: 'Analytics Engine', subtext: 'Mastery Score' },
     ],
     githubUrl: 'https://github.com/pratiksawant/learnify-ai-platform',
+    backgroundImage: learnifyBg,
     caseStudyUrl: '/case-studies/learnify',
   },
 ];

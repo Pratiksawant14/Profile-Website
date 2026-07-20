@@ -30,6 +30,7 @@ export interface EngineeringSystem {
   technologies: string[];
   architecture: ArchitectureNode[];
   highlights?: string[];
+  backgroundImage?: string;
   githubUrl?: string;
   caseStudyUrl: string;
 }

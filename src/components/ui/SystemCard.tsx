@@ -51,6 +51,19 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="w-full rounded-xl bg-background dark:bg-surface-900/50 border-2 border-accent/40 dark:border-accent/50 shadow-lg hover:shadow-xl hover:border-accent/70 transition-all duration-normal overflow-hidden p-6 sm:p-8 md:p-10 relative group"
       >
+        {system.backgroundImage && (
+          <div
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{
+              backgroundImage: `url("${system.backgroundImage}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(3px)',
+              opacity: 0.15,
+            }}
+          />
+        )}
+        <div className="relative z-10 flex flex-col h-full">
         {/* Top Flagship Banner */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-surface-200 dark:border-surface-800">
           <div className="flex items-center gap-3">
@@ -190,6 +203,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
 
           </div>
         </div>
+        </div>
       </motion.div>
     );
   }
@@ -203,12 +217,24 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'w-full rounded-lg bg-background dark:bg-surface-900/30 border border-surface-200 dark:border-surface-800 shadow-card hover:shadow-card-hover hover:border-surface-300 dark:hover:border-surface-700 transition-all duration-normal p-6 sm:p-8 flex flex-col gap-8',
+        'w-full rounded-lg bg-background dark:bg-surface-900/30 border border-surface-200 dark:border-surface-800 shadow-card hover:shadow-card-hover hover:border-surface-300 dark:hover:border-surface-700 transition-all duration-normal overflow-hidden relative group p-6 sm:p-8 flex flex-col gap-8',
         isAlternateRow ? 'lg:flex-row-reverse' : 'lg:flex-row'
       )}
     >
+      {system.backgroundImage && (
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundImage: `url("${system.backgroundImage}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(3px)',
+            opacity: 0.15,
+          }}
+        />
+      )}
       {/* Left / Right Column: Project Information & Consulting Breakdown */}
-      <div className="flex-1 flex flex-col justify-between space-y-6">
+      <div className="relative z-10 flex-1 flex flex-col justify-between space-y-6">
         <div>
           {/* Status & Subtitle Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -288,7 +314,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
       </div>
 
       {/* Right / Left Column: Compact Architecture Preview Box */}
-      <div className="lg:w-80 xl:w-96 shrink-0 flex flex-col">
+      <div className="relative z-10 lg:w-80 xl:w-96 shrink-0 flex flex-col">
         <div className="h-full p-5 rounded-md bg-surface-900 text-white dark:bg-surface-950 border border-surface-800 flex flex-col justify-between space-y-4 shadow-sm">
           <div className="flex items-center justify-between text-xs font-mono text-accent pb-2.5 border-b border-surface-800">
             <span className="flex items-center gap-1.5 font-bold">
