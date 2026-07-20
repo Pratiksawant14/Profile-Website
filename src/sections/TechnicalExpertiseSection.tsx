@@ -20,14 +20,10 @@ export const TechnicalExpertiseSection: React.FC = () => {
   });
 
   const domainOptions = [
-    { id: 'all', label: 'All Ecosystem Domains' },
-    { id: 'applied-ai', label: 'Applied AI' },
-    { id: 'backend-engineering', label: 'Backend' },
-    { id: 'frontend-engineering', label: 'Frontend' },
-    { id: 'data-engineering', label: 'Data Engineering' },
-    { id: 'cloud-infrastructure', label: 'Cloud & Infra' },
-    { id: 'software-architecture', label: 'Architecture' },
-    { id: 'engineering-tools', label: 'DevOps & Tools' },
+    { id: 'all', label: 'All Domains' },
+    { id: 'applied-ai', label: 'Applied AI & ML' },
+    { id: 'backend-web', label: 'Backend & Web' },
+    { id: 'cloud-devops', label: 'Cloud & Infrastructure' },
   ];
 
   const filteredDomains = useMemo(() => {

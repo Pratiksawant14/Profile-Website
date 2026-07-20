@@ -38,7 +38,7 @@ export const PROFILE_CORE_DOMAINS: EngineeringDomainBadge[] = [
   {
     id: 'nlp',
     title: 'Natural Language Processing',
-    focusArea: 'Transformer architectures, domain fine-tuning (`PEFT/LoRA`), and RAG pipelines.',
+    focusArea: 'Transformer architectures, domain fine-tuning, and RAG pipelines.',
   },
   {
     id: 'llm-engineering',
@@ -76,10 +76,8 @@ export const PROFILE_TECH_SNAPSHOT: TechnicalSnapshotCategory[] = [
     category: 'AI Stack',
     items: [
       'PyTorch',
-      'TensorFlow',
       'LangChain',
       'LangGraph',
-      'PEFT / LoRA',
       'RAG',
       'Embeddings',
       'Vector Databases',
@@ -91,7 +89,7 @@ export const PROFILE_TECH_SNAPSHOT: TechnicalSnapshotCategory[] = [
   },
   {
     category: 'Cloud',
-    items: ['AWS (Foundational)', 'Google Colab GPU'],
+    items: ['AWS (Foundational)', 'Google Colab GPU', 'Docker', 'AWS ECS/Fargate'],
   },
 ];
 
