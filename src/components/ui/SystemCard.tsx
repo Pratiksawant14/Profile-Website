@@ -1,13 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
 import type { EngineeringSystem } from '../../types/systems';
-import { Button } from './Button';
+
 import { Badge } from './Badge';
 import { Tag } from './Tag';
 import { cn } from '../../lib/utils';
 import {
-  ArrowRight,
   ExternalLink,
   Briefcase,
   Wrench,
@@ -30,7 +29,7 @@ export interface SystemCardProps {
 }
 
 export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
-  const navigate = useNavigate();
+
   const isFlagship = Boolean(system.flagship);
   const isAlternateRow = index % 2 !== 0 && !isFlagship;
 
@@ -41,9 +40,6 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
     Completed: 'default',
   };
 
-  const handleOpenCaseStudy = () => {
-    navigate(system.caseStudyUrl || `/case-studies/${system.id}`);
-  };
 
   if (isFlagship) {
     return (
@@ -191,14 +187,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
                 <span>Source Code</span>
               </a>
             )}
-            <Button
-              variant="primary"
-              size="md"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-              onClick={handleOpenCaseStudy}
-            >
-              View Case Study
-            </Button>
+
           </div>
         </div>
       </motion.div>
@@ -293,14 +282,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, index }) => {
               </span>
             )}
 
-            <Button
-              variant="outline"
-              size="sm"
-              rightIcon={<ArrowRight className="w-3.5 h-3.5 text-accent" />}
-              onClick={handleOpenCaseStudy}
-            >
-              View Case Study
-            </Button>
+
           </div>
         </div>
       </div>

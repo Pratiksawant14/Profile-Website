@@ -35,8 +35,6 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ links }) => {
 
   const navLinks = [
     { name: 'Engineering Systems', to: '/engineering-systems' },
-    { name: 'Methodology & Process', to: '/process' },
-    { name: 'Case Studies', to: '/case-studies' },
     { name: 'Technical Expertise', to: '/expertise' },
     { name: 'Professional Profile', to: '/resume' },
     { name: 'Collaboration & Contact', to: '/contact' },

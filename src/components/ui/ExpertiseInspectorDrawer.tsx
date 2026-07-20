@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+
 import type { TechNode } from '../../types/expertise';
 import { Badge } from './Badge';
 import { Tag } from './Tag';
 import {
   Briefcase,
   Layers,
-  ExternalLink,
   X,
   Cpu,
 } from 'lucide-react';
@@ -23,21 +22,8 @@ export const ExpertiseInspectorDrawer: React.FC<ExpertiseInspectorDrawerProps> =
   domainTitle,
   onClose,
 }) => {
-  const navigate = useNavigate();
 
-  const handleOpenCaseStudy = (projectName: string) => {
-    const slugMap: Record<string, string> = {
-      'PAIN AWAY': '/case-studies/pain-away',
-      'Mem-Rooted': '/case-studies/mem-rooted',
-      TranslateIQ: '/case-studies/translate-iq',
-      'Intelli-Credit': '/case-studies/intelli-credit',
-      'Autonomous CI/CD Healing Agent': '/case-studies/autonomous-cicd-healing-agent',
-      Learnify: '/case-studies/learnify',
-    };
-    if (slugMap[projectName]) {
-      navigate(slugMap[projectName]);
-    }
-  };
+
 
   return (
     <AnimatePresence>
@@ -115,20 +101,14 @@ export const ExpertiseInspectorDrawer: React.FC<ExpertiseInspectorDrawerProps> =
                 PRODUCTION PROJECTS USING THIS:
               </span>
               {activeNode.projects.map((proj) => (
-                <button
+                <Tag
                   key={proj}
-                  onClick={() => handleOpenCaseStudy(proj)}
-                  className="px-3 py-1 rounded bg-accent/20 hover:bg-accent/30 text-accent border border-accent/40 font-sans text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="font-sans font-bold bg-surface-800 text-surface-200 border border-surface-700"
                 >
-                  <span>{proj}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </button>
+                  {proj}
+                </Tag>
               ))}
             </div>
-
-            <span className="font-mono text-[10px] text-surface-500 self-end sm:self-center">
-              CLICK PROJECT PILL TO OPEN CASE STUDY
-            </span>
           </div>
         </motion.div>
       )}

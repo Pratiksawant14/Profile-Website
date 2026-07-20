@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionContainer } from '../layouts';
-import { SectionHeading, Badge, SystemFilter, SystemCard, EmptyState, Button } from '../components';
+import { SectionHeading, Badge, SystemFilter, SystemCard, EmptyState } from '../components';
 import { ENGINEERING_SYSTEMS } from '../constants';
 import type { SystemCategory } from '../types/systems';
-import { Cpu, ArrowRight, Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 
 export const EngineeringSystemsSection = () => {
   const [activeCategory, setActiveCategory] = useState<SystemCategory>('all');
@@ -44,7 +44,7 @@ export const EngineeringSystemsSection = () => {
         description="A curated collection of production-grade systems designed to solve real business workflows using AI, backend architecture and scalable software engineering."
         action={
           <Badge variant="accent" showDot className="py-1 px-3">
-            VERIFIED CASE STUDIES
+            PROJECT SHOWCASE
           </Badge>
         }
       />
@@ -87,40 +87,7 @@ export const EngineeringSystemsSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Concluding Consulting CTA Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-20 sm:mt-24 p-8 sm:p-12 rounded-xl bg-surface-900 text-white dark:bg-surface-950 border border-surface-800 shadow-xl flex flex-col md:flex-row items-start justify-between gap-8 text-left relative overflow-hidden"
-      >
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="space-y-3 max-w-2xl relative z-10 text-left items-start">
-          <div className="flex items-center justify-start gap-2 text-xs font-mono text-accent font-bold">
-            <Cpu className="w-4 h-4" />
-            <span>ARCHITECTURAL METHODOLOGY</span>
-          </div>
-          <h3 className="font-sans font-bold text-2xl sm:text-3xl tracking-tight leading-snug">
-            Interested in how these systems were designed?
-          </h3>
-          <p className="font-sans text-base text-surface-300 leading-relaxed">
-            Explore deep-dive technical RFCs, high-concurrency database trade-off analyses, and comprehensive architectural breakdowns for each production system.
-          </p>
-        </div>
-
-        <div className="relative z-10 shrink-0">
-          <Button
-            variant="primary"
-            size="lg"
-            rightIcon={<ArrowRight className="w-4 h-4" />}
-            onClick={() => alert('Redirecting to comprehensive engineering case study index')}
-            className="shadow-lg hover:shadow-xl font-semibold"
-          >
-            View detailed engineering case studies
-          </Button>
-        </div>
-      </motion.div>
     </SectionContainer>
   );
 };
